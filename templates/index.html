@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Rainfall Prediction</title>
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css?family=Pacifico" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Hind:300" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Open+Sans+Condensed:300" rel="stylesheet">
+    <!-- Custom CSS -->
+     <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+    <!-- <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}"> -->
+</head>
+<body>
+    <div class="container">
+        <h1 class="title">Rainfall Prediction</h1>
+        <form action="{{ url_for('predict') }}" method="post" class="form">
+            <div class="form-group">
+                <input type="text" name="pressure" placeholder="Enter Pressure (hPa)" required="required" class="input-field">
+            </div>
+            <div class="form-group">
+                <input type="text" name="maxtemp" placeholder="Enter Max Temperature (°C)" required="required" class="input-field">
+            </div>
+            <div class="form-group">
+                <input type="text" name="temperature" placeholder="Enter Temperature (°C)" required="required" class="input-field">
+            </div>
+            <div class="form-group">
+                <input type="text" name="mintemp" placeholder="Enter Min Temperature (°C)" required="required" class="input-field">
+            </div>
+            <div class="form-group">
+                <input type="text" name="dewpoint" placeholder="Enter Dew Point (°C)" required="required" class="input-field">
+            </div>
+            <div class="form-group">
+                <input type="text" name="humidity" placeholder="Enter Humidity (%)" required="required" class="input-field">
+            </div>
+            <div class="form-group">
+                <input type="text" name="cloud" placeholder="Enter Cloud Cover (%)" required="required" class="input-field">
+            </div>
+            <div class="form-group">
+                <input type="text" name="rainfall" placeholder="Enter Rainfall (mm)" required="required" class="input-field">
+            </div>
+            <div class="form-group">
+                <input type="text" name="sunshine" placeholder="Enter Sunshine (hours)" required="required" class="input-field">
+            </div>
+            <div class="form-group">
+                <input type="text" name="winddirection" placeholder="Enter Wind Direction" required="required" class="input-field">
+            </div>
+            <div class="form-group">
+                <input type="text" name="windspeed" placeholder="Enter Wind Speed (km/h)" required="required" class="input-field">
+            </div>
+            <button type="submit" class="btn">Predict Rainfall</button>
+        </form>
+        {% if prediction_text %}
+        <div class="prediction">
+            <p>{{ prediction_text }}</p>
+        </div>
+        {% endif %}
+    </div>
+</body>
+</html>
